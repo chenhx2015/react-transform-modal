@@ -50,6 +50,6 @@
     "prop-types": "^15.7.2",
     "react": "^16.8",
     "react-dom": "^16.8",
-    "react-tiny-portal": "^0.1.0",
+    "react-tiny-portal": "^0.1.0"
   }
 }
