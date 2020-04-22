@@ -1,9 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
-import useModal from "../src/modal";
+import useModal from "../src/useModal";
 
 const styleModalContent = {
-  margin: "1.75rem auto",
+  margin: "4.75rem auto",
   width: "90%",
   maxWidth: "500px",
   background: "#fff",
@@ -34,8 +34,11 @@ const styleModalClose = {
   cursor: "pointer",
 };
 
-const ExampleModal = () => {
+const stylePl = {
+  paddingLeft: "1rem",
+};
 
+const ExampleModal = () => {
   const { Modal, open, close } = useModal();
 
   return (
@@ -53,7 +56,9 @@ const ExampleModal = () => {
             </button>
           </div>
           <div>
-            <p>You can also close me by pressing the &quot;ESC&quot; key.</p>
+            <p style={stylePl}>
+              You can also close me by pressing the &quot;ESC&quot; key.
+            </p>
           </div>
         </div>
       </Modal>
@@ -61,9 +66,7 @@ const ExampleModal = () => {
   );
 };
 
-
 const ExampleModal2 = () => {
-  
   const { Modal, open, close } = useModal();
 
   return (
@@ -81,7 +84,9 @@ const ExampleModal2 = () => {
             </button>
           </div>
           <div>
-            <p>You can also close me by pressing the &quot;ESC&quot; key.</p>
+            <p style={stylePl}>
+              You can also close me by pressing the &quot;ESC&quot; key.
+            </p>
           </div>
         </div>
       </Modal>
@@ -98,7 +103,6 @@ function App() {
         justifyContent: "space-around",
       }}
     >
-
       <ExampleModal />
       <ExampleModal2 />
     </div>

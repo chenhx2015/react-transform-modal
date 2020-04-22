@@ -29737,7 +29737,7 @@
 	});
 
 	var styleModalContent = {
-	  margin: "1.75rem auto",
+	  margin: "4.75rem auto",
 	  width: "90%",
 	  maxWidth: "500px",
 	  background: "#fff",
@@ -29765,6 +29765,9 @@
 	  opacity: "0.5",
 	  cursor: "pointer"
 	};
+	var stylePl = {
+	  paddingLeft: "1rem"
+	};
 
 	var ExampleModal = function ExampleModal() {
 	  var _useModal = useModal(),
@@ -29784,7 +29787,9 @@
 	    type: "button"
 	  }, /*#__PURE__*/react.createElement("span", {
 	    "aria-hidden": "true"
-	  }, "\xD7"))), /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement("p", null, "You can also close me by pressing the \"ESC\" key.")))));
+	  }, "\xD7"))), /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement("p", {
+	    style: stylePl
+	  }, "You can also close me by pressing the \"ESC\" key.")))));
 	};
 
 	var ExampleModal2 = function ExampleModal2() {
@@ -29805,7 +29810,9 @@
 	    type: "button"
 	  }, /*#__PURE__*/react.createElement("span", {
 	    "aria-hidden": "true"
-	  }, "\xD7"))), /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement("p", null, "You can also close me by pressing the \"ESC\" key.")))));
+	  }, "\xD7"))), /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement("p", {
+	    style: stylePl
+	  }, "You can also close me by pressing the \"ESC\" key.")))));
 	};
 
 	function App() {
