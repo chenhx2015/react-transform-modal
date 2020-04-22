@@ -2,7 +2,7 @@
 
 inspired by [the container transform pattern of Material Design motion system](https://www.material.io/design/motion/the-motion-system.html#container-transform)
 
-![images](https://github.com/chenhx2015/react-transform-modal/blob/master/portal.gif)
+![images](./img/portal.gif)
 
 # usage
 
