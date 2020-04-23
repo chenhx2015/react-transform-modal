@@ -4,7 +4,7 @@ inspired by [the container transform pattern of Material Design motion system](h
 
 ![images](./portal.gif)
 
-[demo](https://chenhx2015.github.io/react-transform-modal/)
+[demo address](https://chenhx2015.github.io/react-transform-modal/)
 
 # usage
 
