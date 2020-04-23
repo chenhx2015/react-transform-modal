@@ -11,7 +11,7 @@ inspired by [the container transform pattern of Material Design motion system](h
 ```
 import React from "react";
 import { render } from "react-dom";
-import useModal from "../src/useModal";
+import useModal from "react-transform-modal";
 
 const ExampleModal = () => {
   const { Modal, open, close } = useModal();
