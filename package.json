@@ -1,7 +1,12 @@
 {
   "name": "react-transform-modal",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "modify details",
+  "keywords": [
+    "react",
+    "transform",
+    "modal"
+  ],
   "main": "dist/react-transform-modal.js",
   "module": "dist/react-transform-modal.esm.js",
   "scripts": {
