@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from "react";
-import {usePortal} from "react-tiny-portal";
+import { usePortal } from "react-tiny-portal";
 import CSSKeyframer from "./keyframer";
-import {replaceOrInsertStyle} from './utils'
+import { replaceOrInsertStyle } from "./utils";
 
 const keyframer = new CSSKeyframer();
 
@@ -19,10 +19,6 @@ function createAnimation(portalEl, startEl) {
       transform: `translate(${x}px, ${y}px) scale(0.1, 0.1) `,
       opacity: 0,
     },
-    "50%": {
-      transform: `translate(${x * 0.25}px, ${y * 0.25}px) scale(0.75, 0.75)`,
-      opacity: 0.75,
-    },
     "100%": {
       opacity: 1,
     },
@@ -32,73 +28,74 @@ function createAnimation(portalEl, startEl) {
     "0%": {
       opacity: 1,
     },
-    "50%": {
-      transform: "scale3d(0.5, 0.5, 0.5)",
-      opacity: 0.5,
-    },
     "100%": {
       transform: `translate(${x}px, ${y}px) scale3d(0.01, 0.01, 0.01)`,
       opacity: 0,
     },
   });
 
-  const el = replaceOrInsertStyle('data-portal-animation', 'portal-animation');
-  if (el){
+  const el = replaceOrInsertStyle("data-portal-animation", "portal-animation");
+  if (el) {
     el.innerHTML = `.portalFade {
         animation: portalFadeIn 1s ease-out;
     }`;
   }
 
-  return ()=>{
-    const el = replaceOrInsertStyle('data-portal-animation', 'portal-animation');
-    if (el){
+  return () => {
+    const el = replaceOrInsertStyle(
+      "data-portal-animation",
+      "portal-animation"
+    );
+    if (el) {
       el.innerHTML = `.portalFade {
           animation: portalFadeOut 1s ease-out;
       }`;
     }
-  }
+  };
 }
 
-
 export default () => {
-  
   const { Portal, open, close, isOpen } = usePortal();
 
-  const refBond = useRef(null)
-  const refAnimation = useRef(null)
-  const openModal = useCallback((e) => {
-    if(refBond.current){
-      let portalEl = refBond.current
-      refAnimation.current = createAnimation(portalEl, e.target)
+  const refBond = useRef(null);
+  const refAnimation = useRef(null);
+  const openModal = useCallback(
+    (e) => {
+      if (refBond.current) {
+        let portalEl = refBond.current;
+        refAnimation.current = createAnimation(portalEl, e.target);
 
-      return open(e)
-    }else{
-      return null
-    }
-  }, [open])
-
-  const closeModal = useCallback((e) => {
-      if(refAnimation.current){
-        refAnimation.current()
-        if(e && e.persist && typeof e.persist === 'function') {
-            e.persist()
-        }
-        if(refBond.current) {
-            let portalEl = refBond.current
-            const handleAnimationEnd = () => {
-                portalEl.removeEventListener('animationend', handleAnimationEnd);
-                close(e)
-            }
-            portalEl.addEventListener('animationend', handleAnimationEnd)
-        }
-      }else{
-          close(e)
+        return open(e);
+      } else {
+        return null;
       }
+    },
+    [open]
+  );
 
-  }, [close])
+  const closeModal = useCallback(
+    (e) => {
+      if (refAnimation.current) {
+        refAnimation.current();
+        if (e && e.persist && typeof e.persist === "function") {
+          e.persist();
+        }
+        if (refBond.current) {
+          let portalEl = refBond.current;
+          const handleAnimationEnd = () => {
+            portalEl.removeEventListener("animationend", handleAnimationEnd);
+            close(e);
+          };
+          portalEl.addEventListener("animationend", handleAnimationEnd);
+        }
+      } else {
+        close(e);
+      }
+    },
+    [close]
+  );
 
-
-  const Modal = useCallback((props) =>{
+  const Modal = useCallback((props) => {
     let styleModal = {
       position: "fixed",
       top: 0,
@@ -107,28 +104,28 @@ export default () => {
       background: "rgba(0, 0, 0, 0.5)",
     };
 
-    if(props.bindTo) {
-      refBond.current = document.getElementById(props.bindTo)
-    }else{
-      refBond.current = document.body
+    if (props.bindTo) {
+      refBond.current = document.getElementById(props.bindTo);
+    } else {
+      refBond.current = document.body;
     }
- 
+
     return (
-      <Portal {...props}  >
-          <div tabIndex={-1}  style={styleModal} className='portalFade'>
-              {props.children}
-          </div>
+      <Portal {...props}>
+        <div tabIndex={-1} style={styleModal} className="portalFade">
+          {props.children}
+        </div>
       </Portal>
     );
-  })
+  });
 
   return Object.assign(
     {},
     {
       Modal,
       isOpen,
-      open:openModal,
-      close:closeModal,
+      open: openModal,
+      close: closeModal,
     }
   );
 };

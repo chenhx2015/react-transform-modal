@@ -8,17 +8,29 @@ inspired by [the container transform pattern of Material Design motion system](h
 
 # usage
 
+1. Import dependencies and module method
+
 ```
 import React from "react";
 import { render } from "react-dom";
 import useModal from "react-transform-modal";
 
+```
+
+2. Build UI
+
+- Modal : this component can wrap other element like title , content and button
+- open: open the modal
+- close: close the modal
+- styleModalContent: the style of modal
+- styleModalHeader: the style of modal's header
+
+```
 const ExampleModal = () => {
   const { Modal, open, close } = useModal();
 
   return (
     <div>
-      <h3>Example Modal</h3>
       <p>
         <button onClick={open}>Open</button>
       </p>
@@ -32,35 +44,8 @@ const ExampleModal = () => {
           </div>
           <div>
             <p style={stylePl}>
-              You can also close me by pressing the &quot;ESC&quot; key.
-            </p>
-          </div>
-        </div>
-      </Modal>
-    </div>
-  );
-};
-
-const ExampleModal2 = () => {
-  const { Modal, open, close } = useModal();
-
-  return (
-    <div>
-      <h3>Example Modal 2</h3>
-      <p>
-        <button onClick={open}>Open</button>
-      </p>
-      <Modal>
-        <div style={styleModalContent}>
-          <div style={styleModalHeader}>
-            <h5>Title</h5>
-            <button style={styleModalClose} onClick={close} type="button">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div>
-            <p style={stylePl}>
-              You can also close me by pressing the &quot;ESC&quot; key.
+              You can also close me by pressing the &quot;ESC&quot; key.</br>
+              This is the content area...
             </p>
           </div>
         </div>
@@ -71,18 +56,18 @@ const ExampleModal2 = () => {
 
 function App() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-around",
-      }}
-    >
+    <div>
       <ExampleModal />
-      <ExampleModal2 />
     </div>
   );
 }
 
+```
+
+3. render the modal
+
+```
+
 render(<App />, document.getElementById("root"));
+
 ```

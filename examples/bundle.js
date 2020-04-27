@@ -29631,10 +29631,6 @@
 	      transform: "translate(".concat(x, "px, ").concat(y, "px) scale(0.1, 0.1) "),
 	      opacity: 0
 	    },
-	    "50%": {
-	      transform: "translate(".concat(x * 0.25, "px, ").concat(y * 0.25, "px) scale(0.75, 0.75)"),
-	      opacity: 0.75
-	    },
 	    "100%": {
 	      opacity: 1
 	    }
@@ -29643,23 +29639,19 @@
 	    "0%": {
 	      opacity: 1
 	    },
-	    "50%": {
-	      transform: "scale3d(0.5, 0.5, 0.5)",
-	      opacity: 0.5
-	    },
 	    "100%": {
 	      transform: "translate(".concat(x, "px, ").concat(y, "px) scale3d(0.01, 0.01, 0.01)"),
 	      opacity: 0
 	    }
 	  });
-	  var el = replaceOrInsertStyle('data-portal-animation', 'portal-animation');
+	  var el = replaceOrInsertStyle("data-portal-animation", "portal-animation");
 
 	  if (el) {
 	    el.innerHTML = ".portalFade {\n        animation: portalFadeIn 1s ease-out;\n    }";
 	  }
 
 	  return function () {
-	    var el = replaceOrInsertStyle('data-portal-animation', 'portal-animation');
+	    var el = replaceOrInsertStyle("data-portal-animation", "portal-animation");
 
 	    if (el) {
 	      el.innerHTML = ".portalFade {\n          animation: portalFadeOut 1s ease-out;\n      }";
@@ -29689,7 +29681,7 @@
 	    if (refAnimation.current) {
 	      refAnimation.current();
 
-	      if (e && e.persist && typeof e.persist === 'function') {
+	      if (e && e.persist && typeof e.persist === "function") {
 	        e.persist();
 	      }
 
@@ -29697,11 +29689,11 @@
 	        var portalEl = refBond.current;
 
 	        var handleAnimationEnd = function handleAnimationEnd() {
-	          portalEl.removeEventListener('animationend', handleAnimationEnd);
+	          portalEl.removeEventListener("animationend", handleAnimationEnd);
 	          close(e);
 	        };
 
-	        portalEl.addEventListener('animationend', handleAnimationEnd);
+	        portalEl.addEventListener("animationend", handleAnimationEnd);
 	      }
 	    } else {
 	      close(e);
