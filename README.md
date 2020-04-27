@@ -10,11 +10,10 @@ inspired by [the container transform pattern of Material Design motion system](h
 
 1. Import dependencies and module method
 
-```
+```javascript
 import React from "react";
 import { render } from "react-dom";
 import useModal from "react-transform-modal";
-
 ```
 
 2. Build UI
@@ -25,7 +24,7 @@ import useModal from "react-transform-modal";
 - styleModalContent: the style of modal
 - styleModalHeader: the style of modal's header
 
-```
+```javascript
 const ExampleModal = () => {
   const { Modal, open, close } = useModal();
 
@@ -66,8 +65,6 @@ function App() {
 
 3. render the modal
 
-```
-
+```javascript
 render(<App />, document.getElementById("root"));
-
 ```
